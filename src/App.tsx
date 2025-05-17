@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import RecentProjectsPage from './pages/RecentProjectsPage';
 import ContactUsPage from './pages/ContactUsPage';
+import NotFoundPage from './pages/NotFoundPage';
+import Layout from './components/Layout';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/recent-projects" element={<RecentProjectsPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
     </Router>

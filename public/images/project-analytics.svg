@@ -1,0 +1,7 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#3498db"/>
+  <rect x="0" y="300" width="800" height="100" fill="#2980b9"/>
+  <rect x="300" y="50" width="200" height="200" fill="#ff6b35" opacity="0.7" rx="10"/>
+  <text x="400" y="200" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle">Data Analytics Platform</text>
+  <text x="400" y="350" font-family="Arial" font-size="18" fill="#ffffff" text-anchor="middle">HealthTech Solutions</text>
+</svg>
