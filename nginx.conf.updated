@@ -1,0 +1,37 @@
+# Updated nginx configuration with www to non-www redirect
+# Server block for www subdomain - redirects to non-www
+server {
+    listen 80;
+    server_name www.jagadeeshindia.com;
+    
+    # Redirect www to non-www with 301 (permanent) redirect
+    return 301 $scheme://jagadeeshindia.com$request_uri;
+}
+
+# Server block for non-www (main domain)
+server {
+    listen 80;
+    server_name jagadeeshindia.com localhost;
+    
+    # Document root where nginx looks for files to serve
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+    
+    # Enable compression for better performance
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+    
+    # Serve static assets with long cache
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+    
+    # For single page application - redirect all non-file requests to index.html
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+    
+    # Default 404 page
+    error_page 404 /index.html;
+}
