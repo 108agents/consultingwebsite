@@ -1,0 +1,207 @@
+/* New Hero Section - Clean Implementation */
+
+.hero {
+  position: relative;
+  background-color: #1a4687;
+  color: white;
+  padding: 40px 24px; /* Reduced from 80px to 40px for top/bottom padding */
+  max-height: 500px; /* Added max-height to make it smaller */
+}
+
+/* Background with overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(26, 70, 135, 0.9) 0%, rgba(11, 36, 75, 0.95) 100%);
+  z-index: 1;
+}
+
+/* Optional pattern overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.2;
+  z-index: 2;
+}
+
+/* Container */
+.hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  display: block !important; /* Force display */
+  visibility: visible !important; /* Force visibility */
+}
+
+/* Content */
+.hero__content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: block !important; /* Force display */
+  visibility: visible !important; /* Force visibility */
+  opacity: 1 !important; /* Force opacity */
+}
+
+/* Headings */
+.hero__title {
+  font-size: 36px; /* Reduced from 42px */
+  font-weight: 700;
+  margin-bottom: 12px; /* Reduced from 16px */
+  line-height: 1.2;
+  color: white !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.hero__subtitle {
+  font-size: 24px; /* Reduced from 28px */
+  font-weight: 600;
+  margin-bottom: 16px; /* Reduced from 24px */
+  line-height: 1.3;
+  color: white !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Accent line */
+.hero__accent {
+  width: 70px;
+  height: 3px;
+  background-color: #ff6b35;
+  margin: 12px auto 16px; /* Reduced from 16px auto 24px */
+  border-radius: 2px;
+}
+
+/* Description */
+.hero__description {
+  font-size: 16px; /* Reduced from 18px */
+  line-height: 1.5; /* Slightly reduced line height */
+  margin-bottom: 16px; /* Reduced from 32px */
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Call to action buttons */
+.hero__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.hero__button {
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero__button--primary {
+  background-color: #ff6b35;
+  color: white;
+  border: none;
+}
+
+.hero__button--secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+/* Stats */
+.hero__stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 48px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero__stat {
+  text-align: center;
+}
+
+.hero__stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #ff8c35;
+  margin-bottom: 8px;
+}
+
+.hero__stat-label {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .hero {
+    padding: 30px 16px; /* Reduced from 60px */
+    max-height: 450px; /* Smaller height on mobile */
+  }
+
+  .hero__title {
+    font-size: 32px;
+  }
+
+  .hero__subtitle {
+    font-size: 24px;
+  }
+
+  .hero__description {
+    font-size: 16px;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero__button {
+    width: 100%;
+  }
+
+  .hero__stats {
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .hero__subtitle {
+    font-size: 20px;
+  }
+}

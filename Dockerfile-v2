@@ -1,0 +1,18 @@
+# Frontend-only deployment for the consulting website
+FROM nginx:alpine
+
+# Copy built frontend assets
+COPY ./build /usr/share/nginx/html
+
+# Copy public assets (will overwrite any duplicates from build)
+COPY ./public /usr/share/nginx/html
+
+# Configure nginx to handle SPA routing
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/
+
+# Expose port 80 for HTTP
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
